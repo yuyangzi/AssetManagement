@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'less_group_page.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(LessGroupPage());
 }
 
 class MyApp extends StatelessWidget {
@@ -61,7 +63,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
