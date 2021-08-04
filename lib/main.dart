@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+import 'home_page_screen.dart';
 import 'input_and_forms_learm.dart';
 import 'less_group_page.dart';
 import 'progress_learm.dart';
+import 'row_and_column_learm.dart';
 import 'state_manage_learn.dart';
 import 'statefull_group_page.dart';
 
@@ -82,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: ProgressRoute(),
+        child: RowAndColumnPage(),
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _incrementCounter,
