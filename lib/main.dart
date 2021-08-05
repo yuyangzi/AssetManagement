@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'align_learn.dart';
 import 'flex_layout_learn.dart';
 import 'home_page_screen.dart';
 import 'input_and_forms_learm.dart';
 import 'less_group_page.dart';
 import 'progress_learm.dart';
 import 'row_and_column_learm.dart';
+import 'stack_and_positioned_learm.dart';
 import 'state_manage_learn.dart';
 import 'statefull_group_page.dart';
 import 'wrap_layout_learn.dart';
@@ -86,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: WrapLayoutPage(),
+        child: AlignPage(),
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _incrementCounter,
