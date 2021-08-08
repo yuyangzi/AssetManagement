@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class StateFullGroup extends StatefulWidget {
   _StateFullGroupState createState() => _StateFullGroupState();
@@ -63,6 +64,18 @@ class _StateFullGroupState extends State<StateFullGroup> {
                                       EdgeInsets.fromLTRB(5, 5, 5, 0),
                                   hintText: '请输入文本',
                                   hintStyle: TextStyle(fontSize: 15)),
+                            ),
+                            Container(
+                              height: 100,
+                              margin: EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(color: Colors.lightBlue),
+                              child: PageView(
+                                children: [
+                                  Text('1111', style: TextStyle(color: Colors.red),),
+                                  Text('2222', style: TextStyle(color: Colors.deepOrangeAccent),),
+                                  Text('3333', style: TextStyle(color: Colors.cyanAccent),),
+                                ],
+                              ),
                             )
                           ],
                         ),

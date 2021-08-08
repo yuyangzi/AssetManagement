@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'GridView_learn.dart';
+import 'ListView_learn.dart';
+import 'SingleChildScrollView_learn.dart';
 import 'align_learn.dart';
 import 'flex_layout_learn.dart';
 import 'home_page_screen.dart';
@@ -88,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: AlignPage(),
+        child: InfiniteGridView(),
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: _incrementCounter,
@@ -98,3 +101,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
