@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'CustomScrollView_learn.dart';
 import 'GridView_learn.dart';
 import 'ListView_learn.dart';
+import 'ScrollController_learn.dart';
 import 'SingleChildScrollView_learn.dart';
 import 'align_learn.dart';
 import 'constrained_and_sized_learn.dart';
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter APP Home Page'),
+      home: ScrollNotificationPage(),
     );
   }
 }
