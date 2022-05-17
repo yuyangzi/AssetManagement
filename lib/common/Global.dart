@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/cacheConfig.dart';
 import '../models/profile.dart';
 import 'CacheObject.g.dart';
-import 'Git.g.dart';
+import 'Git.dart';
 
 const _themes = <MaterialColor>[
   Colors.blue,
