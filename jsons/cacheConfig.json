@@ -1,5 +1,5 @@
 {
-  "enable": true,
-  "maxAge": 1000,
-  "maxCount": 100
+  "enable":true,
+  "maxAge":1000,
+  "maxCount":100
 }

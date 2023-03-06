@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.flutter3_learnrn">
+    package="com.example.flutter_todo_list">
    <application
-        android:label="flutter3_learnrn"
+        android:label="flutter_todo_list"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
