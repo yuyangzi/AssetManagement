@@ -2,10 +2,9 @@ import 'dart:html';
 import 'dart:js_util';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_todo_list/common/Global.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => Global.init().then((value) => runApp(const MyApp()));
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -106,15 +105,16 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const InputChip(label: Text('Person')),
-            ConstrainedBox(constraints: const BoxConstraints(
-              minWidth: 80.0,
-              minHeight: 50.0
-            ),
-            child: const SizedBox(
-              height: 80.0,
-              width: 80.0,
-              child: DecoratedBox(decoration: BoxDecoration(color: Colors.green)),
-            ),)
+            ConstrainedBox(
+              constraints:
+                  const BoxConstraints(minWidth: 80.0, minHeight: 50.0),
+              child: const SizedBox(
+                height: 80.0,
+                width: 80.0,
+                child: DecoratedBox(
+                    decoration: BoxDecoration(color: Colors.green)),
+              ),
+            )
           ],
         ),
       ),
