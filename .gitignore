@@ -42,3 +42,4 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+local/gradle-7.5-all.zip
