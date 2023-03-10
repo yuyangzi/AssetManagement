@@ -89,54 +89,106 @@ class AssetsListItem extends StatefulWidget {
 }
 
 class _AssetsListItemState extends State<AssetsListItem> {
-  void Function(PointerDownEvent event) handleDownEvent =
-      (PointerDownEvent event) => print('object');
+  bool isOpen = false;
+
+  late void Function(PointerDownEvent event) handleDownEvent;
+
+  @override
+  void initState() {
+    super.initState();
+    handleDownEvent =
+        (PointerDownEvent event) => setState(() => isOpen = !isOpen);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Listener(
+      onPointerDown: handleDownEvent,
+      child: Padding(
+          padding: const EdgeInsets.only(bottom: 10),
+          child: isOpen
+              ? const AssetsItemDetailsList()
+              : const AssetsItemOverview()),
+    );
+  }
+}
+
+class AssetsItemOverview extends StatelessWidget {
+  const AssetsItemOverview({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-
-    return Listener(
-        onPointerDown: handleDownEvent,
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: Colors.green,
+        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+      ),
+      child: SizedBox(
+        height: 80,
+        width: screenWidth - 40,
         child: Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: DecoratedBox(
-              decoration: const BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.all(Radius.circular(4.0)),
-              ),
-              child: SizedBox(
-                  height: 80,
-                  width: screenWidth - 40,
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                '流动资金',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                              Text('公积金、招商银行'),
-                              Icon(Icons.more_horiz)
-                            ]),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: const [
-                            Text('113'),
-                            SizedBox(height: 10),
-                            Text('2月28日 更新'),
-                          ],
-                        )
-                      ],
+          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      '流动资金',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                  )),
-            )));
+                    Text('公积金、招商银行'),
+                    Icon(Icons.more_horiz)
+                  ]),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: const [
+                  Text('113'),
+                  SizedBox(height: 10),
+                  Text('2月28日 更新'),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AssetsItemDetailsList extends StatelessWidget {
+  const AssetsItemDetailsList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    return SizedBox(
+      width: screenWidth - 40,
+      child: Column(
+        children: [
+          DecoratedBox(
+            decoration: const BoxDecoration(
+              color: Colors.green,
+              borderRadius: BorderRadius.all(Radius.circular(4.0)),
+            ),
+            child: SizedBox(
+              height: 50,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [Text('公积金'), Text('11111111')],
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
