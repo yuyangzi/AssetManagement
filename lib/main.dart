@@ -35,10 +35,7 @@ class _MyAssetsPageState extends State<MyAssetsPage> {
           title: Text(widget.title),
         ),
         body: Column(
-          children: const [
-            TotalAssets(assetTotalNum: 6402389),
-            AssetsList()
-          ],
+          children: const [TotalAssets(assetTotalNum: 6402389), AssetsList()],
         ));
   }
 }
@@ -55,7 +52,6 @@ class TotalAssets extends StatelessWidget {
     return Container(
         width: screenWidth,
         height: 60,
-        color: Colors.blue,
         alignment: Alignment.centerLeft,
         child: Padding(
           padding: const EdgeInsets.only(left: 5),
@@ -93,17 +89,54 @@ class AssetsListItem extends StatefulWidget {
 }
 
 class _AssetsListItemState extends State<AssetsListItem> {
+  void Function(PointerDownEvent event) handleDownEvent =
+      (PointerDownEvent event) => print('object');
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return DecoratedBox(
-      decoration: const BoxDecoration(color: Colors.white),
-      child: SizedBox(
-        height: 50,
-        width: screenWidth - 20,
-        child: const Text('data'),
-      ),
-    );
+    return Listener(
+        onPointerDown: handleDownEvent,
+        child: Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: DecoratedBox(
+              decoration: const BoxDecoration(
+                color: Colors.green,
+                borderRadius: BorderRadius.all(Radius.circular(4.0)),
+              ),
+              child: SizedBox(
+                  height: 80,
+                  width: screenWidth - 40,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                '流动资金',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              Text('公积金、招商银行'),
+                              Icon(Icons.more_horiz)
+                            ]),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: const [
+                            Text('113'),
+                            SizedBox(height: 10),
+                            Text('2月28日 更新'),
+                          ],
+                        )
+                      ],
+                    ),
+                  )),
+            )));
   }
 }
