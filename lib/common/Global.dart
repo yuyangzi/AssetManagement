@@ -1,7 +1,7 @@
-
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -142,4 +142,8 @@ class NetCache extends Interceptor {
   void delete(String key) {
     cache.remove(key);
   }
+}
+
+class Application {
+  static late final FluroRouter router;
 }
