@@ -15,12 +15,19 @@ class _MyAssetsPageState extends State<MyAssetsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Column(
-          children: const [TotalAssets(assetTotalNum: 6402389), AssetsList()],
-        ));
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(widget.title),
+      ),
+      body: Column(
+        children: const [TotalAssets(assetTotalNum: 6402389), AssetsList()],
+      ),
+      floatingActionButton: IconButton(
+        icon: const Icon(Icons.add_circle),
+        iconSize: 60,
+        onPressed: () => Navigator.pushNamed(context, Routes.addAssets),
+      ),
+    );
   }
 }
 
@@ -89,7 +96,7 @@ class _AssetsListItemState extends State<AssetsListItem> {
     return Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: isOpen
-            ? const AssetsItemDetailsList()
+            ? AssetsItemDetailsList(closeOpenEvent: _handleDownEvent)
             : AssetsItemOverview(
                 handleDownEvent: _handleDownEvent,
               ));
@@ -151,7 +158,10 @@ class AssetsItemOverview extends StatelessWidget {
 }
 
 class AssetsItemDetailsList extends StatelessWidget {
-  const AssetsItemDetailsList({Key? key}) : super(key: key);
+  const AssetsItemDetailsList({Key? key, required this.closeOpenEvent})
+      : super(key: key);
+
+  final void Function(PointerDownEvent event) closeOpenEvent;
 
   @override
   Widget build(BuildContext context) {
@@ -160,20 +170,23 @@ class AssetsItemDetailsList extends StatelessWidget {
       width: screenWidth - 40,
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: DecoratedBox(
-              decoration: const BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.all(Radius.circular(4.0)),
-              ),
-              child: SizedBox(
-                height: 50,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [Text('公积金'), Text('11111111')],
+          Listener(
+            onPointerDown: closeOpenEvent,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: DecoratedBox(
+                decoration: const BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                ),
+                child: SizedBox(
+                  height: 50,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [Text('公积金'), Text('11111111')],
+                    ),
                   ),
                 ),
               ),

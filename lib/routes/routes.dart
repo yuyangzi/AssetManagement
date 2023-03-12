@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
-import 'package:flutter_todo_list/Pages/assets_detail_page.dart';
+import 'package:flutter_todo_list/pages/add_assets_page.dart';
 
-import '../Pages/my_assets_page.dart';
+import '../pages/assets_detail_page.dart';
+import '../pages/my_assets_page.dart';
 
-// 对应处理函数(一般处理函数单独放一个文件)
 var _myAssetsPageHandler = Handler(
     handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
   return const MyAssetsPage(
@@ -13,14 +13,22 @@ var _myAssetsPageHandler = Handler(
 });
 
 var _assetsDetailPageHandler = Handler(
-    handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
-  return const AssetsDetailPage();
-});
+  handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+    return const AssetsDetailPage();
+  },
+);
+
+var _addAssetsPageHandler = Handler(
+  handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
+    return const AddAssetsPage();
+  },
+);
 
 // 路由配置
 class Routes {
   static String home = "/";
   static String assetsDetail = "/assetsDetail";
+  static String addAssets = "/addAssets";
 
   static void configureRoutes(FluroRouter router) {
     router.notFoundHandler = Handler(
@@ -29,5 +37,6 @@ class Routes {
     });
     router.define(home, handler: _myAssetsPageHandler);
     router.define(assetsDetail, handler: _assetsDetailPageHandler);
+    router.define(addAssets, handler: _addAssetsPageHandler);
   }
 }
